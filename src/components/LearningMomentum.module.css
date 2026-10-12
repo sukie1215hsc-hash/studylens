@@ -1,0 +1,205 @@
+.section {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2.2rem;
+}
+
+.kicker {
+  margin: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.title {
+  margin: 0.25rem 0 0;
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 560;
+  letter-spacing: -0.03em;
+}
+
+.summary {
+  margin: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+}
+
+.scoreRow {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.1rem;
+  align-items: center;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--line);
+}
+
+.score {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.score strong {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 560;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.score span {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.meter {
+  height: 2px;
+  background: var(--line);
+}
+
+.meter i {
+  display: block;
+  height: 100%;
+  background: var(--cobalt);
+}
+
+.placeholder {
+  margin: 0;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  font-weight: 560;
+}
+
+.copy,
+.empty {
+  margin: 0;
+  max-width: 58ch;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.chartHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 0.35rem;
+}
+
+.chartTitle {
+  margin: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.toggles button {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  padding: 0.55rem 0.85rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.toggles button:hover,
+.toggles button:focus-visible {
+  border-color: var(--ink);
+}
+
+.toggles button.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.chart {
+  width: 100%;
+  height: auto;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+}
+
+.grid {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.tick,
+.axis {
+  fill: var(--ink-soft);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+.area {
+  fill: color-mix(in srgb, var(--cobalt) 12%, transparent);
+  stroke: none;
+}
+
+.line {
+  fill: none;
+  stroke: var(--cobalt);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.dot {
+  fill: var(--bg-raised);
+  stroke: var(--cobalt);
+  stroke-width: 1.6;
+}
+
+@media (max-width: 700px) {
+  .head,
+  .chartHead,
+  .scoreRow {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .scoreRow {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .meter {
+    width: 100%;
+  }
+
+  .toggles {
+    width: 100%;
+  }
+
+  .toggles button {
+    flex: 1;
+    text-align: center;
+  }
+}

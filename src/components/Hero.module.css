@@ -1,0 +1,123 @@
+.hero {
+  display: grid;
+  grid-template-columns: minmax(17rem, 0.9fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(1.6rem, 4vw, 3.4rem);
+  width: 100%;
+  max-width: 100%;
+  min-height: calc(100svh - 3.6rem);
+  padding: clamp(1.6rem, 4.5vw, 3.2rem) clamp(1.1rem, 3vw, 2.4rem) clamp(2.2rem, 5vw, 3.6rem);
+  overflow-x: clip;
+}
+
+.copy {
+  min-width: 0;
+}
+
+.kicker {
+  margin: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+}
+
+.title {
+  margin: 0.55rem 0 0;
+  max-width: 14ch;
+  font-family: var(--serif);
+  font-weight: 560;
+  font-size: clamp(2.4rem, 5.4vw, 4.35rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.lede {
+  margin: 1.05rem 0 0;
+  max-width: 42ch;
+  font-size: clamp(0.98rem, 1.5vw, 1.12rem);
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.5rem;
+  margin-top: 1.45rem;
+}
+
+.primary {
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.72rem 1.1rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.primary:hover,
+.primary:focus-visible {
+  background: var(--cobalt);
+  border-color: var(--cobalt);
+  color: var(--on-accent);
+}
+
+.secondary {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.15rem;
+}
+
+.secondary:hover,
+.secondary:focus-visible {
+  color: var(--cobalt);
+  border-color: var(--cobalt);
+}
+
+.preview {
+  min-width: 0;
+  max-width: 100%;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.caption {
+  margin: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 980px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-top: 1.4rem;
+  }
+
+  .title {
+    max-width: 12ch;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-bottom: 1.8rem;
+  }
+
+  .lede {
+    max-width: none;
+  }
+
+  .primary {
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,0 +1,293 @@
+.slot {
+  min-height: min(62svh, 560px);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wrap {
+  position: relative;
+  width: 100%;
+  height: min(62svh, 560px);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--galaxy-bg);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wrap[data-expanded='true'] {
+  position: fixed;
+  inset: 3.4rem 0 0;
+  z-index: 80;
+  height: auto;
+  border: 0;
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  background: var(--galaxy-bg);
+  outline: none;
+  box-shadow: none;
+  border: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.canvas:focus,
+.canvas:focus-visible,
+.canvas:active,
+.canvas:hover {
+  outline: none;
+  box-shadow: none;
+  background: var(--galaxy-bg);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hint {
+  position: absolute;
+  right: 0.8rem;
+  bottom: 0.8rem;
+  margin: 0;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg-raised) 88%, transparent);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.float {
+  position: absolute;
+  transform: translate(12px, -28px);
+  max-width: 16rem;
+  padding: 0.22rem 0.45rem;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card {
+  position: absolute;
+  z-index: 5;
+  width: min(260px, 78%);
+  padding: 0.9rem 0.95rem 0.75rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--star-color, var(--cobalt));
+  box-shadow: 4px 8px 0 rgba(43, 42, 39, 0.04);
+}
+
+.kicker {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+}
+
+.swatch {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--star-color, var(--cobalt));
+}
+
+.card h3 {
+  margin: 0.4rem 0 0.15rem;
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  font-weight: 560;
+  line-height: 1.2;
+}
+
+.card p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+  margin: 0.7rem 0 0;
+}
+
+.meta dt {
+  margin: 0;
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.meta dd {
+  margin: 0.18rem 0 0;
+  font-size: 0.84rem;
+  color: var(--ink);
+}
+
+.notes {
+  margin-top: 0.7rem;
+  padding-left: 0.55rem;
+  border-left: 2px solid var(--star-color, var(--line));
+}
+
+.notes span {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.card button {
+  margin-top: 0.7rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.observatoryBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 81;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem clamp(1.1rem, 3vw, 2.4rem);
+  border-bottom: 1px solid var(--line);
+  background: var(--galaxy-bg);
+}
+
+.observatoryBar p {
+  margin: 0;
+  font-size: 0.64rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.observatoryBar button {
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.5rem 0.8rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.tray {
+  position: absolute;
+  left: 0.8rem;
+  bottom: 0.8rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.65rem;
+  border: 1px dashed var(--line);
+  background: color-mix(in srgb, var(--bg-raised) 90%, transparent);
+  color: var(--ink-soft);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.trayArmed {
+  border-style: solid;
+  border-color: var(--ink);
+  color: var(--ink);
+  background: var(--bg-raised);
+}
+
+.confirm {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--ink) 28%, transparent);
+}
+
+.confirmCard {
+  width: min(22rem, 92%);
+  padding: 1.2rem 1.25rem 1.05rem;
+  border: 1px solid var(--line);
+  background: var(--bg-raised);
+}
+
+.confirmCard h3 {
+  margin: 0.3rem 0 0.5rem;
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 560;
+}
+
+.confirmCard p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.confirmActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.ghost,
+.danger {
+  padding: 0.58rem 0.85rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ghost {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+}
+
+.danger {
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+}
+
+@media (max-width: 760px) {
+  .wrap {
+    height: min(52svh, 420px);
+  }
+
+  .hint {
+    display: none;
+  }
+}

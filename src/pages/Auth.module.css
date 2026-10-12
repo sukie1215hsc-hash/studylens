@@ -1,0 +1,96 @@
+.page {
+  width: min(100%, 28rem);
+  margin: 0 auto;
+  padding: 2.4rem clamp(1.1rem, 3vw, 2.4rem) 4rem;
+}
+
+.kicker {
+  margin: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+}
+
+.title {
+  margin: 0.3rem 0 0;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 560;
+  letter-spacing: -0.03em;
+}
+
+.lede {
+  margin: 0.7rem 0 1.6rem;
+  color: var(--ink-soft);
+}
+
+.form {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.label {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--bg-raised);
+  color: var(--ink);
+  font-size: 1rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--cobalt);
+  outline-offset: 2px;
+}
+
+.error {
+  margin: 0;
+  color: var(--coral);
+  font-size: 0.85rem;
+}
+
+.primary {
+  margin-top: 0.35rem;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.78rem 1.05rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.primary:hover,
+.primary:focus-visible {
+  background: var(--cobalt);
+  border-color: var(--cobalt);
+}
+
+.switch {
+  margin: 1.2rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.switch button {
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--cobalt);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}

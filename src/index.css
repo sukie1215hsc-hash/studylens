@@ -1,0 +1,135 @@
+:root,
+html[data-theme='light'] {
+  --bg: #f3f0e8;
+  --bg-raised: #faf8f3;
+  --ink: #2b2a27;
+  --ink-soft: #5c5952;
+  --cobalt: #3a5ba0;
+  --lavender: #8a7ca8;
+  --teal: #3d8b7a;
+  --mint: #9dbea8;
+  --coral: #e07a5f;
+  --sun: #e8c36a;
+  --line: rgba(43, 42, 39, 0.14);
+  --on-accent: #f7f4ee;
+  --galaxy-bg: #ece7dc;
+  --map-guide: rgba(43, 42, 39, 0.12);
+  --map-guide-strong: rgba(43, 42, 39, 0.16);
+  --map-link: rgba(43, 42, 39, 0.32);
+  --map-dust: #2b2a27;
+  --serif: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Palatino, serif;
+  --sans: 'Outfit', 'Avenir Next', 'Segoe UI', sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html[data-theme='dark'] {
+  --bg: #10161c;
+  --bg-raised: #182028;
+  --ink: #f1eadc;
+  --ink-soft: #b7b0a2;
+  --cobalt: #8aa3d1;
+  --lavender: #b3a6c9;
+  --teal: #7eb8aa;
+  --mint: #9dbea8;
+  --coral: #e08a72;
+  --sun: #e8c36a;
+  --line: rgba(236, 228, 212, 0.14);
+  --on-accent: #f3eee4;
+  --galaxy-bg: #141c24;
+  --map-guide: rgba(236, 228, 212, 0.14);
+  --map-guide-strong: rgba(236, 228, 212, 0.22);
+  --map-link: rgba(236, 228, 212, 0.28);
+  --map-dust: #ece4d4;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+html,
+body {
+  transition: background-color 180ms var(--ease), color 180ms var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cobalt);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

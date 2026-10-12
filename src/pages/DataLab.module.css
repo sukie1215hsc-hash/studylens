@@ -1,0 +1,39 @@
+.dataLabContainer {
+  width: 100%;
+  padding: 1.2rem clamp(1.1rem, 3vw, 2.4rem) 3.2rem;
+  max-width: 1120px;
+  margin: 0 auto;
+  color: var(--ink);
+}
+
+.kicker {
+  margin: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+}
+
+.pageTitle {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin: 0.25rem 0 0;
+  color: var(--ink);
+}
+
+.lede {
+  margin: 0.7rem 0 1.6rem;
+  max-width: 46ch;
+  color: var(--ink-soft);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dataLabContainer {
+    padding: 1rem;
+  }
+
+  .pageTitle {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+  }
+}

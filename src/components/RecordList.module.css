@@ -1,0 +1,126 @@
+.section {
+  display: grid;
+  gap: 1.1rem;
+  color: var(--ink);
+}
+
+.kicker {
+  margin: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.title {
+  margin: 0.25rem 0 0;
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 560;
+  letter-spacing: -0.03em;
+}
+
+.summary {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem 1rem;
+}
+
+.toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.toggles button,
+.period select {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  padding: 0.55rem 0.85rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.toggles button:hover,
+.toggles button:focus-visible,
+.period select:hover,
+.period select:focus-visible {
+  border-color: var(--ink);
+}
+
+.toggles button.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.period select {
+  min-width: 11rem;
+}
+
+.empty {
+  margin: 0.4rem 0 0;
+  color: var(--ink-soft);
+  max-width: 46ch;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 0.72rem 0.85rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.88rem;
+  vertical-align: top;
+}
+
+.table th {
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 500;
+  background: color-mix(in srgb, var(--bg-raised) 80%, var(--bg));
+}
+
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.task {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+@media (max-width: 700px) {
+  .head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

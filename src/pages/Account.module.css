@@ -1,0 +1,79 @@
+.page {
+  width: min(100%, 32rem);
+  margin: 0 auto;
+  padding: 2.4rem clamp(1.1rem, 3vw, 2.4rem) 4rem;
+}
+
+.kicker {
+  margin: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+}
+
+.title {
+  margin: 0.3rem 0 0;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 560;
+  letter-spacing: -0.03em;
+}
+
+.lede {
+  margin: 0.7rem 0 1.4rem;
+  color: var(--ink-soft);
+}
+
+.who {
+  display: grid;
+  gap: 0.2rem;
+  margin: 0 0 0.35rem;
+}
+
+.who strong {
+  font-size: 1.05rem;
+  font-weight: 560;
+}
+
+.who span,
+.meta {
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+}
+
+.meta {
+  margin: 0 0 1.5rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.primary,
+.ghost {
+  border: 1px solid var(--ink);
+  padding: 0.72rem 1.05rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.primary {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.ghost {
+  background: none;
+  color: var(--ink);
+}
+
+html[data-lang='zh'] .kicker,
+html[data-lang='zh'] .primary,
+html[data-lang='zh'] .ghost {
+  letter-spacing: 0.08em;
+  text-transform: none;
+}

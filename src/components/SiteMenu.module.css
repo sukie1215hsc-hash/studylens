@@ -1,0 +1,133 @@
+.root {
+  position: relative;
+  justify-self: end;
+}
+
+.trigger {
+  border: 0;
+  background: none;
+  padding: 0.35rem 0;
+  color: var(--ink);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.trigger:hover,
+.trigger:focus-visible {
+  color: var(--cobalt);
+}
+
+.panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.55rem);
+  width: min(18.5rem, calc(100vw - 1.6rem));
+  padding: 1.05rem 1.1rem 1.15rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  z-index: 40;
+}
+
+.pages {
+  display: none;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin: 0 0 1rem;
+  padding: 0 0 0.95rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.pages button {
+  border: 0;
+  background: none;
+  padding: 0.15rem 0;
+  text-align: left;
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.pages button:hover,
+.pageActive {
+  color: var(--cobalt);
+}
+
+.block {
+  padding: 0.15rem 0 0.95rem;
+}
+
+.block + .block {
+  border-top: 1px solid var(--line);
+  padding-top: 0.95rem;
+}
+
+.block p {
+  margin: 0 0 0.45rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.block div {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.block button {
+  flex: 1;
+  border: 1px solid var(--line);
+  background: none;
+  padding: 0.48rem 0.55rem;
+  color: var(--ink);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.block button[aria-pressed='true'] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.account {
+  display: block;
+  width: 100%;
+  margin-top: 0.15rem;
+  padding: 0.85rem 0 0.1rem;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: none;
+  text-align: left;
+  color: var(--ink);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.account:hover,
+.account:focus-visible {
+  color: var(--cobalt);
+}
+
+@media (max-width: 820px) {
+  .pages {
+    display: flex;
+  }
+}
+
+html[data-lang='zh'] .trigger,
+html[data-lang='zh'] .pages button,
+html[data-lang='zh'] .block p,
+html[data-lang='zh'] .block button,
+html[data-lang='zh'] .account {
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
