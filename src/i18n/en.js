@@ -347,6 +347,7 @@ export default {
   'community.publish': 'Publish',
   'community.save': 'Save',
   'community.needTitle': 'Give this reflection a title.',
-  'community.needBody': 'Write a little more before publishing.',
+  'community.needBody': 'Write something in this reflection.',
+  'community.needComment': 'Write a comment first.',
   'community.publishFail': 'Could not publish.',
 }

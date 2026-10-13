@@ -333,6 +333,7 @@ export default {
   'community.publish': '发布',
   'community.save': '保存',
   'community.needTitle': '请为这篇反思起一个标题。',
-  'community.needBody': '发布前请再写一点内容。',
+  'community.needBody': '请填写反思内容。',
+  'community.needComment': '请先写一条评论。',
   'community.publishFail': '无法发布。',
 }

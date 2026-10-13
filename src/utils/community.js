@@ -274,8 +274,8 @@ export async function publishReflection(account, entry) {
   if (!account?.id) return { ok: false, error: 'Sign in before sharing a reflection.' }
   const title = String(entry?.title || '').trim()
   const body = String(entry?.body || '').trim()
-  if (title.length < 2) return { ok: false, error: 'Give this reflection a title.' }
-  if (body.length < 8) return { ok: false, error: 'Write a little more before publishing.' }
+  if (!title) return { ok: false, error: 'community.needTitle' }
+  if (!body) return { ok: false, error: 'community.needBody' }
   if (publishReflectionInFlight) {
     return { ok: false, error: 'community.publishFail' }
   }
@@ -347,7 +347,7 @@ export async function listComments(reflectionId) {
 export async function addComment(account, reflectionId, body) {
   if (!account?.id) return { ok: false, error: 'Sign in to comment.' }
   const text = String(body || '').trim()
-  if (text.length < 1) return { ok: false, error: 'Write a comment first.' }
+  if (!text) return { ok: false, error: 'community.needComment' }
 
   const reflection = await getCloudReflection(reflectionId)
   if (!reflection.ok) return reflection
