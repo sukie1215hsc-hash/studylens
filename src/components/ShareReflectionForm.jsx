@@ -40,11 +40,11 @@ export default function ShareReflectionForm({
     if (submittingRef.current || busy) return
     const name = title.trim()
     const text = body.trim()
-    if (name.length < 2) {
+    if (!name) {
       setError('community.needTitle')
       return
     }
-    if (text.length < 8) {
+    if (!text) {
       setError('community.needBody')
       return
     }
@@ -92,7 +92,6 @@ export default function ShareReflectionForm({
               value={title}
               onChange={(event) => setTitle(event.target.value)}
               placeholder={t('community.titlePlaceholder')}
-              maxLength={120}
               required
             />
           </div>
