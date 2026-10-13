@@ -292,6 +292,7 @@ export default function Community({ categories = [], session = null, onNeedAuth 
   const [publishedGalaxy, setPublishedGalaxy] = useState(null)
   const [comments, setComments] = useState([])
   const [communityError, setCommunityError] = useState('')
+  const publishingRef = useRef(false)
   const galaxies = showSample ? COMMUNITY_PREVIEW.galaxies : liveGalaxies
   const openArticle = useMemo(
     () => (openId ? reflections.find((item) => item.id === openId) || null : null),
@@ -546,14 +547,20 @@ export default function Community({ categories = [], session = null, onNeedAuth 
             setEditing(null)
           }}
           onShare={async (entry) => {
-            const result = await publishReflection(session, entry)
-            if (!result.ok) return result
-            setSharing(false)
-            setEditing(null)
-            setShowSample(false)
-            await refreshCommunity()
-            if (result.item?.id) setOpenId(result.item.id)
-            return result
+            if (publishingRef.current) return { ok: false, error: 'community.publishFail' }
+            publishingRef.current = true
+            try {
+              const result = await publishReflection(session, entry)
+              if (!result.ok) return result
+              setSharing(false)
+              setEditing(null)
+              setShowSample(false)
+              await refreshCommunity()
+              if (result.item?.id) setOpenId(result.item.id)
+              return result
+            } finally {
+              publishingRef.current = false
+            }
           }}
         />
       ) : null}

@@ -18,6 +18,8 @@ export default function ShareReflectionForm({
   const [category, setCategory] = useState(initial?.category || '')
   const [linkGalaxy, setLinkGalaxy] = useState(Boolean(initial?.galaxy) && Boolean(publishedGalaxy))
   const [error, setError] = useState('')
+  const [busy, setBusy] = useState(false)
+  const submittingRef = useRef(false)
 
   useEffect(() => {
     firstField.current?.focus()
@@ -35,6 +37,7 @@ export default function ShareReflectionForm({
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    if (submittingRef.current || busy) return
     const name = title.trim()
     const text = body.trim()
     if (name.length < 2) {
@@ -45,14 +48,22 @@ export default function ShareReflectionForm({
       setError('community.needBody')
       return
     }
-    const result = await onShare({
-      id: initial?.id,
-      title: name,
-      body: text,
-      category,
-      linkGalaxy: Boolean(linkGalaxy && publishedGalaxy),
-    })
-    if (result && result.ok === false) setError(result.error || 'community.publishFail')
+    submittingRef.current = true
+    setBusy(true)
+    setError('')
+    try {
+      const result = await onShare({
+        id: initial?.id,
+        title: name,
+        body: text,
+        category,
+        linkGalaxy: Boolean(linkGalaxy && publishedGalaxy),
+      })
+      if (result && result.ok === false) setError(result.error || 'community.publishFail')
+    } finally {
+      submittingRef.current = false
+      setBusy(false)
+    }
   }
 
   return (
@@ -131,11 +142,11 @@ export default function ShareReflectionForm({
           )}
           {error ? <p className={styles.error}>{t(error)}</p> : null}
           <div className={styles.actions}>
-            <button type="button" className={styles.secondary} onClick={onClose}>
+            <button type="button" className={styles.secondary} onClick={onClose} disabled={busy}>
               {t('publish.cancel')}
             </button>
-            <button type="submit" className={styles.primary}>
-              {initial ? t('community.save') : t('community.publish')}
+            <button type="submit" className={styles.primary} disabled={busy}>
+              {busy ? t('publish.saving') : initial ? t('community.save') : t('community.publish')}
             </button>
           </div>
         </form>
