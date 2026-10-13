@@ -268,41 +268,51 @@ export async function getReflection(id) {
   return { ok: true, item: hydrated.reflections[0] || null }
 }
 
+let publishReflectionInFlight = false
+
 export async function publishReflection(account, entry) {
   if (!account?.id) return { ok: false, error: 'Sign in before sharing a reflection.' }
   const title = String(entry?.title || '').trim()
   const body = String(entry?.body || '').trim()
   if (title.length < 2) return { ok: false, error: 'Give this reflection a title.' }
   if (body.length < 8) return { ok: false, error: 'Write a little more before publishing.' }
+  if (publishReflectionInFlight) {
+    return { ok: false, error: 'community.publishFail' }
+  }
 
-  const ensured = await ensureProfile(account)
-  if (!ensured.ok) return ensured
+  publishReflectionInFlight = true
+  try {
+    const ensured = await ensureProfile(account)
+    if (!ensured.ok) return ensured
 
-  if (entry?.id) {
-    const current = await getCloudReflection(entry.id)
-    if (!current.ok) return current
-    if (!current.reflection) return { ok: false, error: 'That reflection is already gone.' }
-    if (current.reflection.user_id !== account.id) {
-      return { ok: false, error: 'You can only edit your own reflections.' }
+    if (entry?.id) {
+      const current = await getCloudReflection(entry.id)
+      if (!current.ok) return current
+      if (!current.reflection) return { ok: false, error: 'That reflection is already gone.' }
+      if (current.reflection.user_id !== account.id) {
+        return { ok: false, error: 'You can only edit your own reflections.' }
+      }
     }
+
+    const publicGalaxy = await getAccountGalaxy(account)
+    const payload = {
+      title,
+      body,
+      category: String(entry?.category || '').trim(),
+      galaxyId: Boolean(entry?.linkGalaxy) && publicGalaxy ? publicGalaxy.id : null,
+    }
+
+    const saved = entry?.id
+      ? await updateReflection(account.id, entry.id, payload)
+      : await insertReflection(account.id, payload)
+    if (!saved.ok) return saved
+
+    const hydrated = await hydrateReflections([saved.item])
+    if (!hydrated.ok) return hydrated
+    return { ok: true, updated: Boolean(entry?.id), item: hydrated.reflections[0] }
+  } finally {
+    publishReflectionInFlight = false
   }
-
-  const publicGalaxy = await getAccountGalaxy(account)
-  const payload = {
-    title,
-    body,
-    category: String(entry?.category || '').trim(),
-    galaxyId: Boolean(entry?.linkGalaxy) && publicGalaxy ? publicGalaxy.id : null,
-  }
-
-  const saved = entry?.id
-    ? await updateReflection(account.id, entry.id, payload)
-    : await insertReflection(account.id, payload)
-  if (!saved.ok) return saved
-
-  const hydrated = await hydrateReflections([saved.item])
-  if (!hydrated.ok) return hydrated
-  return { ok: true, updated: Boolean(entry?.id), item: hydrated.reflections[0] }
 }
 
 export async function deleteReflection(account, id) {
